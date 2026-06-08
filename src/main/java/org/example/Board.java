@@ -24,4 +24,18 @@ public class Board {
         }
     }
 
+    public void print() {
+        String sep = "▁▁▁▁▁▁▁";
+        System.out.println(sep);
+        for (int x = 0; x < 3; x++) {
+            System.out.print("|");
+            for (int y = 0; y < 3; y++) {
+                System.out.print(cells[x][y]);
+                System.out.print("|");
+            }
+            System.out.println();
+        }
+        System.out.println("▔▔▔▔▔▔▔");
+    }
+
 }

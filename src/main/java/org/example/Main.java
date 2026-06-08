@@ -4,24 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Hello world!
- *
- */
 public class Main
 {
     public static void main( String[] args ) throws IOException {
-
         BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
         String line;
-
         //Start game, initiallize
         System.out.println("Welcome to TicTacToe!");
         TicTacToe game = new TicTacToe();
         game.start();
         int row = 0, column = 0;
         while (true) {
+            //run gameXX
             System.out.println("Player " + game.getCurrentPlayer().getMarker() + ": please make your move!");
+            game.getBoard().print();
             System.out.println("Choose a row (0-2): ");
             line = br.readLine();
             try {
@@ -50,8 +46,6 @@ public class Main
                 game.getBoard().place(row, column, game.getCurrentPlayer().getMarker());
                 game.switchCurrentPlayer();
             }
-
         }
-
     }
 }
