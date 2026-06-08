@@ -42,4 +42,17 @@ public class TicTacToe {
     public Board getBoard(){
         return board;
     }
+
+    public boolean hasWinner() {
+        for (int x = 0; x < 3; x++) {
+            if (board.getCells()[x][0] != ' ' && board.getCells()[x][0] == board.getCells()[x][1] && board.getCells()[x][1] == board.getCells()[x][2]) {
+                return true;
+            } else if (board.getCells()[0][x] != ' ' && board.getCells()[0][x] == board.getCells()[1][x] && board.getCells()[1][x] == board.getCells()[2][x]) {
+                return true;
+            }
+        }
+        if (board.getCells()[0][0] != ' ' && board.getCells()[0][0] == board.getCells()[1][1] && board.getCells()[1][1] == board.getCells()[2][2]) {
+            return true;
+        } else return board.getCells()[0][2] != ' ' && board.getCells()[0][2] == board.getCells()[1][1] && board.getCells()[1][1] == board.getCells()[2][0];
+    }
 }

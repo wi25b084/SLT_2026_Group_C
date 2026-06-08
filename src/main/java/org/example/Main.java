@@ -44,7 +44,16 @@ public class Main
                 System.err.println("Cell is not empty");
             } else {
                 game.getBoard().place(row, column, game.getCurrentPlayer().getMarker());
-                game.switchCurrentPlayer();
+                if (game.hasWinner()) {
+                        System.out.println("Player " + game.getCurrentPlayer().getMarker() + " has won!");
+                        break;
+                } else if (game.getBoard().isFull()) {
+                    System.out.println("It's a draw!");
+                    break;
+                }
+                else {
+                    game.switchCurrentPlayer();
+                }
             }
         }
     }
