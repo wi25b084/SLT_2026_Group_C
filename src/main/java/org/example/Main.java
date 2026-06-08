@@ -46,15 +46,35 @@ public class Main
                 game.getBoard().place(row, column, game.getCurrentPlayer().getMarker());
                 if (game.hasWinner()) {
                         System.out.println("Player " + game.getCurrentPlayer().getMarker() + " has won!");
-                        break;
+                        if (gameEnd()) {
+                            game.getBoard().clear();
+                            game.start();
+                        } else {
+                            break;
+                        }
                 } else if (game.getBoard().isFull()) {
                     System.out.println("It's a draw!");
-                    break;
+                    if (gameEnd()) {
+                        game.getBoard().clear();
+                        game.start();
+                    } else {
+                        break;
+                    }
                 }
                 else {
                     game.switchCurrentPlayer();
                 }
             }
         }
+    }
+
+    private static boolean gameEnd() throws IOException {
+        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
+        String line;
+
+        System.out.println("Enter 'q' to end or any other key to restart");
+
+        line = br.readLine();
+        return !line.equalsIgnoreCase("q");
     }
 }
