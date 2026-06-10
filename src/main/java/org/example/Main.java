@@ -9,7 +9,7 @@ public class Main
     public static void main( String[] args ) throws IOException {
         BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
         String line;
-        //Start game, initiallize
+        //Start game, initiallize mvn verify/mvn site
         System.out.println("Welcome to TicTacToe!");
         TicTacToe game = new TicTacToe();
         game.start();
