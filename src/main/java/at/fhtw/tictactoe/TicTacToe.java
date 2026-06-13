@@ -110,4 +110,7 @@ public class TicTacToe {
     public Player getCurrentPlayer() { return currentPlayer; }
     public Board getBoard() { return board; }
 
-    public static void main(String[] args)
+public static void main(String[] args) {
+        new TicTacToe().start();
+    }
+}
