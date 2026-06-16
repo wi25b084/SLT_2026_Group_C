@@ -3,7 +3,7 @@ name: CI - Run Tests on Feature Branches
 on:
   push:
     branches:
-      - 'feature/**'
+      - '*'
   pull_request:
     branches:
       - master
