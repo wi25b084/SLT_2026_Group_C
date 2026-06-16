@@ -4,12 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main
-{
-    public static void main( String[] args ) throws IOException {
+public class Main {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
         String line;
-        //Start game, initiallize
         System.out.println("Welcome to TicTacToe!");
         TicTacToe game = new TicTacToe();
         game.start();
@@ -22,7 +20,7 @@ public class Main
             line = br.readLine();
             try {
                 row = Integer.parseInt(line);
-                if (row <0 || row > 2) {
+                if (row < 0 || row > 2) {
                     System.err.println("Row Number not allowed!");
                     continue;
                 }
@@ -33,7 +31,7 @@ public class Main
             line = br.readLine();
             try {
                 column = Integer.parseInt(line);
-                if (column <0 || column > 2) {
+                if (column < 0 || column > 2) {
                     System.err.println("Column Number not allowed!");
                     continue;
                 }
@@ -44,8 +42,34 @@ public class Main
                 System.err.println("Cell is not empty");
             } else {
                 game.getBoard().place(row, column, game.getCurrentPlayer().getMarker());
-                game.switchCurrentPlayer();
+                if (game.hasWinner()) {
+                    System.out.println("Player " + game.getCurrentPlayer().getMarker() + " has won!");
+                    if (gameEnd()) {
+                        game.getBoard().clear();
+                        game.start();
+                    } else {
+                        break;
+                    }
+                } else if (game.getBoard().isFull()) {
+                    System.out.println("It's a draw!");
+                    if (gameEnd()) {
+                        game.getBoard().clear();
+                        game.start();
+                    } else {
+                        break;
+                    }
+                } else {
+                    game.switchCurrentPlayer();
+                }
             }
         }
+    }
+
+    private static boolean gameEnd() throws IOException {
+        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
+        String line;
+        System.out.println("Enter 'q' to end or any other key to restart");
+        line = br.readLine();
+        return !line.equalsIgnoreCase("q");
     }
 }
