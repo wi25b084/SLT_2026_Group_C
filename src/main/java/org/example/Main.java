@@ -13,6 +13,7 @@ public class Main {
         game.start();
         int row = 0, column = 0;
         while (true) {
+            //run gameXX
             System.out.println("Player " + game.getCurrentPlayer().getMarker() + ": please make your move!");
             game.getBoard().print();
             System.out.println("Choose a row (0-2): ");
